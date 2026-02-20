@@ -6,7 +6,8 @@ package tdd;
  * A stack is a data structure that allows adding and removing elements in a last-in-first-out (LIFO) manner.
  * Therefore, giving a stack [1, 2, 3], the first element to be removed is 3, then 2, and finally 1.
  * When adding elements, like 4, the stack becomes [1, 2, 3, 4].
- * NB!! You should not call Collections.min or Collections.max to get the min/max values.
+ * <br>
+ * <strong>NB!! You should not call Collections.min or Collections.max to get the min/max values.</strong>
  */
 public interface MinMaxStack {
 

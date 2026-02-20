@@ -29,7 +29,6 @@ public interface SmartDoorLock {
     /**
      * Locks the door.
      * If the pin is not set, an exception is thrown.
-     *
      */
     void lock();
 

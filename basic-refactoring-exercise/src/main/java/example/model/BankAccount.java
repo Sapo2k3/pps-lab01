@@ -6,12 +6,6 @@ package example.model;
 public interface BankAccount {
 
     /**
-     * Allows to know who is the holder of this bank account
-     * @return the AccountHolder instance related to this bank account.
-     */
-    AccountHolder getHolder();
-
-    /**
      * Returns the current balance of the bank account
      * @return the current balance
      */

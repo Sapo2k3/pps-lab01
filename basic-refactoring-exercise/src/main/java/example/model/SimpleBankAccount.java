@@ -14,10 +14,6 @@ public class SimpleBankAccount implements BankAccount {
         this.holder = holder;
         this.balance = balance;
     }
-    @Override
-    public AccountHolder getHolder(){
-        return this.holder;
-    }
 
     @Override
     public double getBalance() {
@@ -43,6 +39,6 @@ public class SimpleBankAccount implements BankAccount {
     }
 
     private boolean checkUser(final int id) {
-        return this.holder.getId() == id;
+        return this.holder.id() == id;
     }
 }
