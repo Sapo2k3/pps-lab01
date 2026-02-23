@@ -13,6 +13,9 @@ public class SimpleBankAccount implements BankAccount {
 
     public SimpleBankAccount(final AccountHolder holder, final double balance) {
         this.holder = holder;
+        if (!checkAmount(balance)) {
+            throw new IllegalArgumentException("Invalid balance");
+        }
         this.balance = balance;
     }
 

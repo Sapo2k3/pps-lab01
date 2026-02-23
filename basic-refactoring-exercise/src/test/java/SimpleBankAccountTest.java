@@ -33,6 +33,12 @@ class SimpleBankAccountTest {
     }
 
     @Test
+    void testNegativeInitialBalance() {
+        AccountHolder accountHolder = new AccountHolder("Pietro", "Neri", 2);
+        assertThrows(IllegalArgumentException.class, () -> new SimpleBankAccount(accountHolder, NEGATIVE_AMOUNT));
+    }
+
+    @Test
     void testDeposit() {
         bankAccount.deposit(accountHolder.id(), DEPOSIT_EXAMPLE);
         assertEquals(DEPOSIT_EXAMPLE, bankAccount.getBalance());
@@ -43,6 +49,12 @@ class SimpleBankAccountTest {
         bankAccount.deposit(accountHolder.id(), DEPOSIT_EXAMPLE);
         bankAccount.deposit(WRONG_ID, WRONG_DEPOSIT_EXAMPLE);
         assertEquals(DEPOSIT_EXAMPLE, bankAccount.getBalance());
+    }
+
+    @Test
+    void testNegativeDepositAmount() {
+        bankAccount.deposit(accountHolder.id(), NEGATIVE_AMOUNT);
+        assertEquals(INITIAL_AMOUNT, bankAccount.getBalance());
     }
 
     @Test
@@ -61,15 +73,11 @@ class SimpleBankAccountTest {
     }
 
     @Test
-    void testNegativeDepositAmount() {
-        bankAccount.deposit(accountHolder.id(), NEGATIVE_AMOUNT);
-        assertEquals(INITIAL_AMOUNT, bankAccount.getBalance());
-    }
-
-    @Test
     void testNegativeWithdrawtAmount() {
         bankAccount.deposit(accountHolder.id(), DEPOSIT_EXAMPLE);
         bankAccount.withdraw(accountHolder.id(), NEGATIVE_WITHDRAW);
         assertEquals(DEPOSIT_EXAMPLE, bankAccount.getBalance());
     }
+
+
 }
