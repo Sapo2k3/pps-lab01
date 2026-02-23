@@ -18,7 +18,7 @@ class SimpleBankAccountTest {
     private static final int WRONG_ID = 2;
     private static final int INITIAL_AMOUNT = 0;
 
-    private AccountHolder accountHolder;
+    protected AccountHolder accountHolder;
     private BankAccount bankAccount;
 
     @BeforeEach
@@ -62,7 +62,7 @@ class SimpleBankAccountTest {
         bankAccount.deposit(accountHolder.id(), DEPOSIT_EXAMPLE);
         final double balance = bankAccount.getBalance();
         bankAccount.withdraw(accountHolder.id(), WITHDRAW_EXAMPLE);
-        assertEquals(balance - WITHDRAW_EXAMPLE - SimpleBankAccount.FEE, bankAccount.getBalance());
+        assertEquals(balance - WITHDRAW_EXAMPLE, bankAccount.getBalance());
     }
 
     @Test
