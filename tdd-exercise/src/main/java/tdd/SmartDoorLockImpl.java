@@ -14,6 +14,9 @@ public class SmartDoorLockImpl implements SmartDoorLock {
 
     @Override
     public void setPin(int pin) {
+        if(pin < 1000 || pin > 9999){
+            throw new IllegalArgumentException("The pin must be a 4 digit number");
+        }
         this.pin = pin;
     }
 

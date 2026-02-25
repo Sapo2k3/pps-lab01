@@ -10,6 +10,7 @@ public class SmartDoorLockTest {
     private final int MAX_ATTEMPTS = 3;
     private final int PIN = 1234;
     private final int WRONG_PIN = 1235;
+    private final int WRONG_FORMAT_PIN = 123;
 
     SmartDoorLock smartDoorLock;
 
@@ -37,6 +38,13 @@ public class SmartDoorLockTest {
         assertFalse(smartDoorLock.isLocked());
     }
 
+    @Test
+    public void testWrongFormatPin(){
+        SmartDoorLock smartDoorLock = new SmartDoorLockImpl(MAX_ATTEMPTS);
+        assertThrows(IllegalArgumentException.class, () -> smartDoorLock.setPin(WRONG_FORMAT_PIN));
+    }
+
+    @Test
     public void testWrongPinUnlock(){
         smartDoorLock.lock();
         smartDoorLock.unlock(WRONG_PIN);
