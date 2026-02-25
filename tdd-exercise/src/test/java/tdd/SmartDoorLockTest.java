@@ -44,6 +44,13 @@ public class SmartDoorLockTest {
     }
 
     @Test
+    public void noPinUnlock(){
+        SmartDoorLock smartDoorLock = new SmartDoorLockImpl(MAX_ATTEMPTS);
+        smartDoorLock.lock();
+        assertThrows(IllegalStateException.class, () -> smartDoorLock.unlock(PIN));
+    }
+
+    @Test
     public void testFailedAttempts(){
         smartDoorLock.lock();
         smartDoorLock.unlock(WRONG_PIN);
