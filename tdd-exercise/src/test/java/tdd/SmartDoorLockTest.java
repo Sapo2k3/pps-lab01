@@ -26,6 +26,12 @@ public class SmartDoorLockTest {
     }
 
     @Test
+    public void testLockWithNoPin() {
+        SmartDoorLock smartDoorLock = new SmartDoorLockImpl(MAX_ATTEMPTS);
+        assertThrows(IllegalStateException.class, () -> smartDoorLock.lock());
+    }
+
+    @Test
     public void testLock() {
         smartDoorLock.lock();
         assertTrue(smartDoorLock.isLocked());

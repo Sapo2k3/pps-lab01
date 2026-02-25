@@ -40,6 +40,9 @@ public class SmartDoorLockImpl implements SmartDoorLock {
 
     @Override
     public void lock() {
+        if (this.pin == 0) {
+            throw new IllegalStateException("No pin has been set");
+        }
         this.isLocked = true;
     }
 
