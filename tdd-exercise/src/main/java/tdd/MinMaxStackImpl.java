@@ -23,6 +23,7 @@ public class MinMaxStackImpl implements MinMaxStack {
 
     @Override
     public int pop() {
+        checkIfEmpty();
         minStack.pop();
         maxStack.pop();
         return this.stack.pop();
@@ -30,26 +31,35 @@ public class MinMaxStackImpl implements MinMaxStack {
 
     @Override
     public int peek() {
+        checkIfEmpty();
         return this.stack.peek();
     }
 
     @Override
     public int getMin() {
+        checkIfEmpty();
         return minStack.peek();
     }
 
     @Override
     public int getMax() {
+        checkIfEmpty();
         return maxStack.peek();
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return this.stack.isEmpty();
     }
 
     @Override
     public int size() {
-        return 0;
+        return this.stack.size();
+    }
+
+    private void checkIfEmpty() {
+        if(stack.isEmpty()){
+            throw new IllegalStateException("The stack is empty");
+        }
     }
 }
