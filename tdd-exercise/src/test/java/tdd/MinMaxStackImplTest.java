@@ -6,7 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MinMaxStackImplTest {
     @Test
-    public void todo() {
-        assertTrue(true);
+    public void pushAnElement() {
+        MinMaxStack minMaxStack = new MinMaxStackImpl();
+        minMaxStack.push(1);
+        assertEquals(1, minMaxStack.peek());
     }
 }
