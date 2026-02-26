@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MinMaxStackImplTest {
 
     private final int MIN_VALUE = 1;
+    private final int SECOND_MIN_VALUE = 2;
     private final int MAX_VALUE = 100;
     private final int VALUE = 7;
 
@@ -66,12 +67,12 @@ class MinMaxStackImplTest {
     }
 
     @Test
-    void testDuplicateMaxsSurvivePop() {
-        minMaxStack.push(MAX_VALUE);
-        minMaxStack.push(MAX_VALUE);
-        assertEquals(MAX_VALUE, minMaxStack.getMax());
+    void testMinUpdatesAfterPop() {
+        minMaxStack.push(SECOND_MIN_VALUE);
+        minMaxStack.push(MIN_VALUE);
+        assertEquals(MIN_VALUE, minMaxStack.getMin());
         minMaxStack.pop();
-        assertEquals(MAX_VALUE, minMaxStack.getMax());
+        assertEquals(SECOND_MIN_VALUE, minMaxStack.getMin());
     }
 
     @Test
@@ -86,6 +87,17 @@ class MinMaxStackImplTest {
         MinMaxStack minMaxStack = new MinMaxStackImpl();
         assertThrows(IllegalStateException.class, () -> minMaxStack.getMax());
     }
+
+    @Test
+    void testDuplicateMaxsSurvivePop() {
+        minMaxStack.push(MAX_VALUE);
+        minMaxStack.push(MAX_VALUE);
+        assertEquals(MAX_VALUE, minMaxStack.getMax());
+        minMaxStack.pop();
+        assertEquals(MAX_VALUE, minMaxStack.getMax());
+    }
+
+
 
     @Test
     public void testIsEmpty(){
