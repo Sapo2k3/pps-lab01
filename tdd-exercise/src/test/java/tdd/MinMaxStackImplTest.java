@@ -11,4 +11,11 @@ class MinMaxStackImplTest {
         minMaxStack.push(1);
         assertEquals(1, minMaxStack.peek());
     }
+
+    @Test
+    public void popAnElement() {
+        MinMaxStack minMaxStack = new MinMaxStackImpl();
+        minMaxStack.push(1);
+        assertEquals(1, minMaxStack.pop());
+    }
 }
